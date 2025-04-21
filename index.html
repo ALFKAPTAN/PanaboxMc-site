@@ -1,8 +1,9 @@
-<!DOCTYPE html><html lang="tr">
+<!DOCTYPE html>
+<html lang="tr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PanaboxMC</title>
+  <title>BoxPvP - PvP Sunucu</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     function toggleMenu() {
@@ -13,9 +14,9 @@
 </head>
 <body class="bg-gray-900 text-white">
   <!-- Navbar -->
-  <nav class="bg-gradient-to-r from-green-500 to-blue-600 p-4">
+  <nav class="bg-gradient-to-r from-red-500 to-yellow-500 p-4">
     <div class="container mx-auto flex justify-between items-center">
-      <h1 class="text-2xl font-bold">PanaboxMC</h1>
+      <h1 class="text-3xl font-bold">BoxPvP</h1>
       <button class="md:hidden text-white" onclick="toggleMenu()">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -23,73 +24,67 @@
       </button>
       <ul class="hidden md:flex space-x-6">
         <li><a href="#home" class="hover:text-yellow-300">Ana Sayfa</a></li>
-        <li><a href="#" onclick="document.getElementById('market-modal').classList.remove('hidden')" class="hover:text-yellow-300">Market</a></li>
-        <li><a href="#" onclick="document.getElementById('login-modal').classList.remove('hidden')" class="hover:text-yellow-300">Giriş/Kayıt</a></li>
-        <li><a href="https://top.minecraftservers.org/vote/12345" class="hover:text-yellow-300" target="_blank">Oy Ver</a></li>
-        <li><a href="https://discord.gg/SENIN-DISCORD-KODUN" class="hover:text-yellow-300" target="_blank">Discord</a></li>
+        <li><a href="#arenas" class="hover:text-yellow-300">PvP Arenalar</a></li>
+        <li><a href="#shop" class="hover:text-yellow-300">Mağaza</a></li>
+        <li><a href="#leaderboard" class="hover:text-yellow-300">Sıralamalar</a></li>
       </ul>
     </div>
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="md:hidden hidden mt-4 space-y-2">
-      <a href="#home" class="block px-4 py-2 hover:bg-blue-700">Ana Sayfa</a>
-      <a href="#" onclick="document.getElementById('market-modal').classList.remove('hidden')" class="block px-4 py-2 hover:bg-blue-700">Market</a>
-      <a href="#" onclick="document.getElementById('login-modal').classList.remove('hidden')" class="block px-4 py-2 hover:bg-blue-700">Giriş/Kayıt</a>
-      <a href="https://top.minecraftservers.org/vote/12345" class="block px-4 py-2 hover:bg-blue-700" target="_blank">Oy Ver</a>
-      <a href="https://discord.gg/SENIN-DISCORD-KODUN" class="block px-4 py-2 hover:bg-blue-700" target="_blank">Discord</a>
+      <a href="#home" class="block px-4 py-2 hover:bg-red-700">Ana Sayfa</a>
+      <a href="#arenas" class="block px-4 py-2 hover:bg-red-700">PvP Arenalar</a>
+      <a href="#shop" class="block px-4 py-2 hover:bg-red-700">Mağaza</a>
+      <a href="#leaderboard" class="block px-4 py-2 hover:bg-red-700">Sıralamalar</a>
     </div>
-  </nav>  <!-- Hero Section -->  <header id="home" class="h-screen bg-cover bg-center flex items-center justify-center" style="background-image: url('https://wallpapercave.com/wp/wp11725644.jpg');">
+  </nav>
+
+  <!-- Hero Section -->
+  <header id="home" class="h-screen bg-cover bg-center flex items-center justify-center" style="background-image: url('https://wallpapercave.com/wp/wp4631705.jpg');">
     <div class="bg-black bg-opacity-60 p-8 rounded">
-      <h2 class="text-4xl font-bold mb-4">PanaboxMC Sunucusuna Hoşgeldiniz</h2>
-      <p class="text-xl mb-6">Minecraft dünyasına katıl, eğlenceye ortak ol!</p>
+      <h2 class="text-4xl font-bold mb-4">BoxPvP Sunucusuna Hoşgeldiniz</h2>
+      <p class="text-xl mb-6">PvP savaşlarına katıl, eğlencenin tadını çıkar!</p>
       <div class="bg-white text-black px-4 py-2 rounded font-semibold text-lg">
-        Sunucu IP: panabox.aternos.me
+        Sunucu IP: boxpvp.aternos.me
       </div>
     </div>
-  </header>  <!-- Market Modal -->  <div id="market-modal" class="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center hidden">
-    <div class="bg-gray-800 p-6 rounded-xl max-w-2xl w-full">
-      <div class="flex justify-between items-center mb-4">
-        <h2 class="text-2xl font-bold">Mağaza</h2>
-        <button onclick="document.getElementById('market-modal').classList.add('hidden')">Kapat</button>
-      </div>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-gray-700 p-4 rounded-xl">
-          <h4 class="text-lg font-bold">VIP Paket</h4>
-          <p>Özel ayrıcalıklar.</p>
-          <a href="https://discord.gg/SENIN-DISCORD-KODUN" target="_blank" class="block mt-2 bg-yellow-400 text-black px-3 py-1 rounded">Satın Al</a>
-        </div>
-        <div class="bg-gray-700 p-4 rounded-xl">
-          <h4 class="text-lg font-bold">Elmas Set</h4>
-          <p>Elmas ekipman ile başla.</p>
-          <a href="https://discord.gg/SENIN-DISCORD-KODUN" target="_blank" class="block mt-2 bg-yellow-400 text-black px-3 py-1 rounded">Satın Al</a>
-        </div>
-        <div class="bg-gray-700 p-4 rounded-xl">
-          <h4 class="text-lg font-bold">Etkinlik Bileti</h4>
-          <p>Özel etkinlik erişimi.</p>
-          <a href="https://discord.gg/SENIN-DISCORD-KODUN" target="_blank" class="block mt-2 bg-yellow-400 text-black px-3 py-1 rounded">Satın Al</a>
-        </div>
+  </header>
+
+  <!-- PvP Arenas Section -->
+  <section id="arenas" class="py-16 px-4 bg-gray-800">
+    <h2 class="text-3xl font-bold text-center mb-6">PvP Arenalar</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-gray-700 p-6 rounded-xl shadow-md">
+        <h4 class="text-xl font-bold mb-2">Arenalar</h4>
+        <p>Çeşitli PvP haritalarında savaşın.</p>
+        <a href="#join" class="bg-yellow-400 text-black px-4 py-2 rounded-lg font-bold inline-block">Katıl</a>
       </div>
     </div>
-  </div>  <!-- Login Modal -->  <div id="login-modal" class="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center hidden">
-    <div class="bg-gray-800 p-6 rounded-xl max-w-md w-full">
-      <div class="flex justify-between items-center mb-4">
-        <h2 class="text-2xl font-bold">Giriş / Kayıt</h2>
-        <button onclick="document.getElementById('login-modal').classList.add('hidden')">Kapat</button>
+  </section>
+
+  <!-- Shop Section -->
+  <section id="shop" class="py-16 px-4">
+    <h2 class="text-3xl font-bold text-center mb-6">Mağaza</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-gray-700 p-6 rounded-xl shadow-md">
+        <h4 class="text-xl font-bold mb-2">VIP Paket</h4>
+        <p>Özel ayrıcalıklar kazan.</p>
+        <a href="#vip" class="bg-yellow-400 text-black px-4 py-2 rounded-lg font-bold inline-block">Satın Al</a>
       </div>
-      <form class="space-y-4">
-        <div>
-          <label class="block mb-1">Kullanıcı Adı</label>
-          <input type="text" class="w-full p-2 rounded bg-gray-900 text-white border border-gray-600">
-        </div>
-        <div>
-          <label class="block mb-1">Şifre</label>
-          <input type="password" class="w-full p-2 rounded bg-gray-900 text-white border border-gray-600">
-        </div>
-        <div class="flex justify-between">
-          <button type="submit" class="bg-blue-500 px-4 py-2 rounded">Giriş Yap</button>
-          <button type="button" class="bg-green-500 px-4 py-2 rounded">Kayıt Ol</button>
-        </div>
-      </form>
     </div>
-  </div>
+  </section>
+
+  <!-- Leaderboard Section -->
+  <section id="leaderboard" class="py-16 px-4 bg-gray-900">
+    <h2 class="text-3xl font-bold text-center mb-6">Sıralamalar</h2>
+    <div class="bg-gray-700 p-6 rounded-xl">
+      <h4 class="text-xl font-bold">En İyi PvP Oyuncuları</h4>
+      <ol class="list-decimal pl-5">
+        <li>1. Oyuncu A - 500 Zafer</li>
+        <li>2. Oyuncu B - 400 Zafer</li>
+        <li>3. Oyuncu C - 350 Zafer</li>
+      </ol>
+    </div>
+  </section>
+
 </body>
 </html>
