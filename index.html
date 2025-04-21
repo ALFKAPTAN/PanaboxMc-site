@@ -1,137 +1,193 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PanaboxMC - Minecraft Sunucu</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-  <script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PanaboxMC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: white;
+        }
+        .bg-cover {
+            background-image: url('https://example.com/minecraft-background.jpg'); /* Minecraft temalı bir fotoğraf */
+            background-size: cover;
+            background-position: center;
+        }
+        .bg-gradient {
+            background: linear-gradient(90deg, rgba(255, 0, 0, 1) 0%, rgba(255, 165, 0, 1) 100%);
+        }
+        .btn {
+            background-color: #ff9900;
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+        .btn:hover {
+            background-color: #ff6600;
+        }
+        .stats-box {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .stats-box h3 {
+            color: #ff9900;
+        }
+        .price-box {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .price-box h3 {
+            color: #ff9900;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="bg-gradient p-5 fixed w-full top-0 left-0 z-50">
+    <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-3xl font-semibold text-white">PanaboxMC</h1>
+        <div class="space-x-5 hidden md:flex">
+            <a href="#home" class="text-white hover:text-gray-300">Ana Sayfa</a>
+            <a href="#market" class="text-white hover:text-gray-300">Market</a>
+            <a href="#stats" class="text-white hover:text-gray-300">İstatistikler</a>
+            <a href="#discord" class="text-white hover:text-gray-300">Discord</a>
+            <a href="#vote" class="text-white hover:text-gray-300">Vote</a>
+            <a href="#login" class="text-white hover:text-gray-300">Giriş</a>
+        </div>
+        <button onclick="toggleMenu()" class="md:hidden text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+    </div>
+    <div id="mobile-menu" class="hidden mt-4 space-y-2">
+        <a href="#home" class="block px-4 py-2">Ana Sayfa</a>
+        <a href="#market" class="block px-4 py-2">Market</a>
+        <a href="#stats" class="block px-4 py-2">İstatistikler</a>
+        <a href="#discord" class="block px-4 py-2">Discord</a>
+        <a href="#vote" class="block px-4 py-2">Vote</a>
+        <a href="#login" class="block px-4 py-2">Giriş</a>
+    </div>
+</nav>
+
+<!-- Ana Sayfa -->
+<section id="home" class="h-screen bg-cover bg-center flex items-center justify-center text-center bg-opacity-60" style="background-image: url('https://example.com/minecraft-background.jpg');">
+    <div class="container">
+        <h2 class="text-5xl font-bold text-white mb-4">PanaboxMC Minecraft Sunucusu</h2>
+        <p class="text-lg text-white mb-6">Sunucumuza katılın ve müthiş PvP savaşlarını deneyimleyin!</p>
+        <a href="#login" class="btn">Hemen Katıl</a>
+    </div>
+</section>
+
+<!-- Market -->
+<section id="market" class="py-16 bg-gray-800">
+    <div class="container mx-auto text-center">
+        <h2 class="text-3xl font-semibold text-white mb-6">Market</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- VIP Üyelik -->
+            <div class="price-box">
+                <h3 class="text-xl font-semibold text-white mb-4">VIP Üyelik</h3>
+                <p class="text-white">10 TL - Özel ayrıcalıklar ve daha fazlası.</p>
+                <a href="#" onclick="purchaseItem('VIP Üyelik', 10)" class="btn mt-4">Satın Al</a>
+            </div>
+            <!-- VIP+ Üyelik -->
+            <div class="price-box">
+                <h3 class="text-xl font-semibold text-white mb-4">VIP+ Üyelik</h3>
+                <p class="text-white">20 TL - VIP'den daha fazla avantaj.</p>
+                <a href="#" onclick="purchaseItem('VIP+ Üyelik', 20)" class="btn mt-4">Satın Al</a>
+            </div>
+            <!-- MVP Üyelik -->
+            <div class="price-box">
+                <h3 class="text-xl font-semibold text-white mb-4">MVP Üyelik</h3>
+                <p class="text-white">40 TL - Premium ayrıcalıklar.</p>
+                <a href="#" onclick="purchaseItem('MVP Üyelik', 40)" class="btn mt-4">Satın Al</a>
+            </div>
+            <!-- MVP+ Üyelik -->
+            <div class="price-box">
+                <h3 class="text-xl font-semibold text-white mb-4">MVP+ Üyelik</h3>
+                <p class="text-white">60 TL - Daha fazla özellik ve avantaj.</p>
+                <a href="#" onclick="purchaseItem('MVP+ Üyelik', 60)" class="btn mt-4">Satın Al</a>
+            </div>
+            <!-- NVP Üyelik -->
+            <div class="price-box">
+                <h3 class="text-xl font-semibold text-white mb-4">NVP Üyelik</h3>
+                <p class="text-white">80 TL - En yüksek ayrıcalıklar.</p>
+                <a href="#" onclick="purchaseItem('NVP Üyelik', 80)" class="btn mt-4">Satın Al</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sunucu İstatistikleri -->
+<section id="stats" class="py-16 bg-gray-900">
+    <div class="container mx-auto text-center">
+        <h2 class="text-3xl font-semibold text-white mb-6">Sunucu İstatistikleri</h2>
+        <div class="stats-box">
+            <h3 class="text-2xl text-white">Aktif Oyuncu: 250</h3>
+            <h3 class="text-2xl text-white mt-4">1. Oyuncu: 100 Kredi</h3>
+            <h3 class="text-2xl text-white mt-4">2. Oyuncu: 75 Kredi</h3>
+            <h3 class="text-2xl text-white mt-4">3. Oyuncu: 50 Kredi</h3>
+        </div>
+    </div>
+</section>
+
+<!-- Discord -->
+<section id="discord" class="py-16 bg-gray-800">
+    <div class="container mx-auto text-center">
+        <h2 class="text-3xl font-semibold text-white mb-6">Discord</h2>
+        <p class="text-lg text-white mb-6">Sunucumuzun Discord kanalına katılın!</p>
+        <a href="https://discord.gg/c8H8g44z" class="btn">Discord'a Katıl</a>
+    </div>
+</section>
+
+<!-- Vote -->
+<section id="vote" class="py-16 bg-gray-900">
+    <div class="container mx-auto text-center">
+        <h2 class="text-3xl font-semibold text-white mb-6">Sunucumuza Oy Verin</h2>
+        <p class="text-lg text-white mb-6">Bizi desteklemek için sunucumuza oy verin!</p>
+        <a href="https://example.com/vote" class="btn">Oy Ver</a>
+    </div>
+</section>
+
+<!-- Giriş -->
+<section id="login" class="py-16 bg-gray-900">
+    <div class="container mx-auto text-center">
+        <h2 class="text-3xl font-semibold text-white mb-6">Giriş Yap</h2>
+        <input type="text" placeholder="Kullanıcı Adı" class="w-1/3 p-3 mb-4 text-black rounded">
+        <input type="password" placeholder="Şifre" class="w-1/3 p-3 mb-4 text-black rounded">
+        <a href="#" class="btn">Giriş Yap</a>
+    </div>
+</section>
+
+<script>
     // Menü Toggle (Mobil için)
     function toggleMenu() {
-      const menu = document.getElementById('mobile-menu');
-      menu.classList.toggle('hidden');
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
     }
 
-    // Bildirim Gösterme
-    function showAlert(message, title = 'Başarı') {
-      Swal.fire({
-        title: title,
-        text: message,
-        icon: 'success',
-        confirmButtonText: 'Tamam'
-      });
+    // Satın alma işlemi
+    function purchaseItem(item, price) {
+        Swal.fire({
+            title: item + " Satın Alındı!",
+            text: "Başarıyla " + price + " TL ödediniz.",
+            icon: 'success',
+            confirmButtonText: 'Tamam'
+        });
     }
+</script>
 
-    // Market Satın Alma
-    function purchaseItem(item) {
-      showAlert(item + " başarıyla satın alındı!", "Satın Alma");
-    }
-
-    // Üyelik Girişi
-    function login() {
-      showAlert("Başarıyla giriş yaptınız!", "Giriş");
-    }
-
-    // Profil Düzenleme
-    function editProfile() {
-      showAlert("Profil başarıyla düzenlendi!", "Profil Düzenle");
-    }
-  </script>
-</head>
-<body class="bg-gray-900 text-white">
-  <!-- Navbar -->
-  <nav class="bg-gradient-to-r from-red-500 to-yellow-500 p-4 sticky top-0 z-50">
-    <div class="container mx-auto flex justify-between items-center">
-      <h1 class="text-3xl font-bold">PanaboxMC</h1>
-      <button class="md:hidden text-white" onclick="toggleMenu()">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
-      <ul class="hidden md:flex space-x-6">
-        <li><a href="#home" class="hover:text-yellow-300">Ana Sayfa</a></li>
-        <li><a href="#market" class="hover:text-yellow-300">Market</a></li>
-        <li><a href="#stats" class="hover:text-yellow-300">İstatistikler</a></li>
-        <li><a href="#forum" class="hover:text-yellow-300">Forum</a></li>
-        <li><a href="#login" class="hover:text-yellow-300">Giriş Yap</a></li>
-      </ul>
-    </div>
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="md:hidden hidden mt-4 space-y-2">
-      <a href="#home" class="block px-4 py-2 hover:bg-red-700">Ana Sayfa</a>
-      <a href="#market" class="block px-4 py-2 hover:bg-red-700">Market</a>
-      <a href="#stats" class="block px-4 py-2 hover:bg-red-700">İstatistikler</a>
-      <a href="#forum" class="block px-4 py-2 hover:bg-red-700">Forum</a>
-      <a href="#login" class="block px-4 py-2 hover:bg-red-700">Giriş Yap</a>
-    </div>
-  </nav>
-
-  <!-- Ana Sayfa -->
-  <section id="home" class="h-screen bg-cover bg-center flex items-center justify-center" style="background-image: url('https://wallpapercave.com/wp/wp4631705.jpg');">
-    <div class="bg-black bg-opacity-60 p-8 rounded">
-      <h2 class="text-4xl font-bold mb-4">PanaboxMC Minecraft Sunucusuna Hoşgeldiniz</h2>
-      <p class="text-xl mb-6">Dünyanın en iyi PvP savaşlarına katılın!</p>
-      <div class="bg-white text-black px-4 py-2 rounded font-semibold text-lg">
-        Sunucu IP: panabox.aternos.me
-      </div>
-    </div>
-  </section>
-
-  <!-- Market -->
-  <section id="market" class="py-16 px-4 bg-gray-800">
-    <h2 class="text-3xl font-bold text-center mb-6">Mağaza</h2>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-gray-700 p-6 rounded-xl shadow-md">
-        <h4 class="text-xl font-bold mb-2">VIP Paket</h4>
-        <p>Özel ayrıcalıklar kazanın!</p>
-        <button onclick="purchaseItem('VIP Paket')" class="bg-yellow-400 text-black px-4 py-2 rounded-lg font-bold inline-block mt-4">Satın Al</button>
-      </div>
-      <div class="bg-gray-700 p-6 rounded-xl shadow-md">
-        <h4 class="text-xl font-bold mb-2">Premium Paket</h4>
-        <p>Özel haritalara erişim!</p>
-        <button onclick="purchaseItem('Premium Paket')" class="bg-yellow-400 text-black px-4 py-2 rounded-lg font-bold inline-block mt-4">Satın Al</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sunucu İstatistikleri -->
-  <section id="stats" class="py-16 px-4 bg-gray-900">
-    <h2 class="text-3xl font-bold text-center mb-6">Sunucu İstatistikleri</h2>
-    <div class="bg-gray-700 p-6 rounded-xl">
-      <h4 class="text-xl font-bold">Aktif Oyuncular</h4>
-      <p>100+</p>
-      <h4 class="text-xl font-bold mt-4">En İyi Oyuncular</h4>
-      <ul class="list-decimal pl-5">
-        <li>1. OyuncuA - 2000 Puan</li>
-        <li>2. OyuncuB - 1800 Puan</li>
-        <li>3. OyuncuC - 1500 Puan</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Forum -->
-  <section id="forum" class="py-16 px-4 bg-gray-800">
-    <h2 class="text-3xl font-bold text-center mb-6">Forum</h2>
-    <div class="bg-gray-700 p-6 rounded-xl">
-      <h4 class="text-xl font-bold mb-2">Sunucu Güncellemeleri</h4>
-      <p>Yeni güncellemeler hakkında konuşabilirsiniz.</p>
-      <button class="bg-yellow-400 text-black px-4 py-2 rounded-lg font-bold inline-block mt-4">Görüş Bildir</button>
-    </div>
-  </section>
-
-  <!-- Giriş Yap -->
-  <section id="login" class="py-16 px-4 bg-gray-900">
-    <h2 class="text-3xl font-bold text-center mb-6">Giriş Yap</h2>
-    <div class="bg-gray-700 p-6 rounded-xl">
-      <h4 class="text-xl font-bold mb-2">Hesabınıza giriş yapın</h4>
-      <input type="text" placeholder="Kullanıcı Adı" class="w-full p-3 mb-4 text-black rounded">
-      <input type="password" placeholder="Şifre" class="w-full p-3 mb-4 text-black rounded">
-      <button onclick="login()" class="bg-yellow-400 text-black px-4 py-2 rounded-lg font-bold inline-block mt-4">Giriş Yap</button>
-      <div class="mt-4 text-center">
-        <p>Hesabınız yok mu? <a href="#" class="text-yellow-300">Kayıt Olun</a></p>
-      </div>
-    </div>
-  </section>
 </body>
 </html>
