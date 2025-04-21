@@ -5,16 +5,71 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BoxPvP - PvP Sunucu</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <script>
+    // Menü Toggle (Mobil için)
     function toggleMenu() {
       const menu = document.getElementById('mobile-menu');
       menu.classList.toggle('hidden');
     }
+
+    // Bildirim Gösterme
+    function showAlert(message, title = 'Başarı') {
+      Swal.fire({
+        title: title,
+        text: message,
+        icon: 'success',
+        confirmButtonText: 'Tamam'
+      });
+    }
+
+    // Arena Katılma İşlevi
+    function joinArena(arenaName) {
+      showAlert(arenaName + " arenasına katıldınız!");
+    }
+
+    // VIP Satın Alma
+    function purchaseVIP() {
+      showAlert("VIP üyeliğiniz başarıyla satın alındı!", "Satın Alma");
+    }
+
+    // Profil Düzenleme
+    function editProfile() {
+      showAlert("Profil başarıyla düzenlendi!", "Profil Düzenle");
+    }
+
+    // Etkinlik Bildirimi
+    function joinEvent(eventName) {
+      showAlert(eventName + " etkinliğine katıldınız!");
+    }
   </script>
+  <style>
+    /* Hover animasyonları */
+    .hover-zoom:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+    }
+
+    /* Scroll animasyonları */
+    .scroll-up {
+      animation: scrollUp 0.5s ease-out forwards;
+    }
+
+    @keyframes scrollUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
 <body class="bg-gray-900 text-white">
   <!-- Navbar -->
-  <nav class="bg-gradient-to-r from-red-500 to-yellow-500 p-4">
+  <nav class="bg-gradient-to-r from-red-500 to-yellow-500 p-4 sticky top-0 z-50">
     <div class="container mx-auto flex justify-between items-center">
       <h1 class="text-3xl font-bold">BoxPvP</h1>
       <button class="md:hidden text-white" onclick="toggleMenu()">
@@ -27,6 +82,8 @@
         <li><a href="#arenas" class="hover:text-yellow-300">PvP Arenalar</a></li>
         <li><a href="#shop" class="hover:text-yellow-300">Mağaza</a></li>
         <li><a href="#leaderboard" class="hover:text-yellow-300">Sıralamalar</a></li>
+        <li><a href="#profile" class="hover:text-yellow-300">Profil</a></li>
+        <li><a href="#events" class="hover:text-yellow-300">Etkinlikler</a></li>
       </ul>
     </div>
     <!-- Mobile Menu -->
@@ -35,12 +92,14 @@
       <a href="#arenas" class="block px-4 py-2 hover:bg-red-700">PvP Arenalar</a>
       <a href="#shop" class="block px-4 py-2 hover:bg-red-700">Mağaza</a>
       <a href="#leaderboard" class="block px-4 py-2 hover:bg-red-700">Sıralamalar</a>
+      <a href="#profile" class="block px-4 py-2 hover:bg-red-700">Profil</a>
+      <a href="#events" class="block px-4 py-2 hover:bg-red-700">Etkinlikler</a>
     </div>
   </nav>
 
   <!-- Hero Section -->
   <header id="home" class="h-screen bg-cover bg-center flex items-center justify-center" style="background-image: url('https://wallpapercave.com/wp/wp4631705.jpg');">
-    <div class="bg-black bg-opacity-60 p-8 rounded">
+    <div class="bg-black bg-opacity-60 p-8 rounded scroll-up">
       <h2 class="text-4xl font-bold mb-4">BoxPvP Sunucusuna Hoşgeldiniz</h2>
       <p class="text-xl mb-6">PvP savaşlarına katıl, eğlencenin tadını çıkar!</p>
       <div class="bg-white text-black px-4 py-2 rounded font-semibold text-lg">
@@ -51,31 +110,41 @@
 
   <!-- PvP Arenas Section -->
   <section id="arenas" class="py-16 px-4 bg-gray-800">
-    <h2 class="text-3xl font-bold text-center mb-6">PvP Arenalar</h2>
+    <h2 class="text-3xl font-bold text-center mb-6 scroll-up">PvP Arenalar</h2>
     <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-gray-700 p-6 rounded-xl shadow-md">
+      <div class="bg-gray-700 p-6 rounded-xl shadow-md hover-zoom">
         <h4 class="text-xl font-bold mb-2">Arenalar</h4>
         <p>Çeşitli PvP haritalarında savaşın.</p>
-        <a href="#join" class="bg-yellow-400 text-black px-4 py-2 rounded-lg font-bold inline-block">Katıl</a>
+        <button onclick="joinArena('Arena 1')" class="bg-yellow-400 text-black px-4 py-2 rounded-lg font-bold inline-block mt-4">Katıl</button>
+      </div>
+      <div class="bg-gray-700 p-6 rounded-xl shadow-md hover-zoom">
+        <h4 class="text-xl font-bold mb-2">Arena 2</h4>
+        <p>Daha zorlu PvP deneyimi!</p>
+        <button onclick="joinArena('Arena 2')" class="bg-yellow-400 text-black px-4 py-2 rounded-lg font-bold inline-block mt-4">Katıl</button>
       </div>
     </div>
   </section>
 
   <!-- Shop Section -->
   <section id="shop" class="py-16 px-4">
-    <h2 class="text-3xl font-bold text-center mb-6">Mağaza</h2>
+    <h2 class="text-3xl font-bold text-center mb-6 scroll-up">Mağaza</h2>
     <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-gray-700 p-6 rounded-xl shadow-md">
+      <div class="bg-gray-700 p-6 rounded-xl shadow-md hover-zoom">
         <h4 class="text-xl font-bold mb-2">VIP Paket</h4>
         <p>Özel ayrıcalıklar kazan.</p>
-        <a href="#vip" class="bg-yellow-400 text-black px-4 py-2 rounded-lg font-bold inline-block">Satın Al</a>
+        <button onclick="purchaseVIP()" class="bg-yellow-400 text-black px-4 py-2 rounded-lg font-bold inline-block mt-4">Satın Al</button>
+      </div>
+      <div class="bg-gray-700 p-6 rounded-xl shadow-md hover-zoom">
+        <h4 class="text-xl font-bold mb-2">Premium Paket</h4>
+        <p>Özel haritalara erişim!</p>
+        <button onclick="purchaseVIP()" class="bg-yellow-400 text-black px-4 py-2 rounded-lg font-bold inline-block mt-4">Satın Al</button>
       </div>
     </div>
   </section>
 
   <!-- Leaderboard Section -->
   <section id="leaderboard" class="py-16 px-4 bg-gray-900">
-    <h2 class="text-3xl font-bold text-center mb-6">Sıralamalar</h2>
+    <h2 class="text-3xl font-bold text-center mb-6 scroll-up">Sıralamalar</h2>
     <div class="bg-gray-700 p-6 rounded-xl">
       <h4 class="text-xl font-bold">En İyi PvP Oyuncuları</h4>
       <ol class="list-decimal pl-5">
@@ -86,5 +155,25 @@
     </div>
   </section>
 
+  <!-- Profile Section -->
+  <section id="profile" class="py-16 px-4 bg-gray-800">
+    <h2 class="text-3xl font-bold text-center mb-6 scroll-up">Profil</h2>
+    <div class="bg-gray-700 p-6 rounded-xl">
+      <h4 class="text-xl font-bold">Oyuncu Adı: OyuncuX</h4>
+      <p>Zaferler: 200</p>
+      <p>Katıldığınız Arenalar: 5</p>
+      <button onclick="editProfile()" class="bg-yellow-400 text-black px-4 py-2 rounded-lg font-bold inline-block mt-4">Profil Düzenle</button>
+    </div>
+  </section>
+
+  <!-- Events Section -->
+  <section id="events" class="py-16 px-4 bg-gray-900">
+    <h2 class="text-3xl font-bold text-center mb-6 scroll-up">Etkinlikler</h2>
+    <div class="bg-gray-700 p-6 rounded-xl">
+      <h4 class="text-xl font-bold">PvP Turnuvası</h4>
+      <p>Haftalık PvP turnuvasına katılın!</p>
+      <button onclick="joinEvent('PvP Turnuvası')" class="bg-yellow-400 text-black px-4 py-2 rounded-lg font-bold inline-block mt-4">Katıl</button>
+    </div>
+  </section>
 </body>
 </html>
