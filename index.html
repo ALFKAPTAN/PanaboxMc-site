@@ -4,19 +4,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PanaboxMC</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+  </script>
 </head>
 <body class="bg-gray-900 text-white">
   <!-- Navbar -->
   <nav class="bg-gradient-to-r from-green-500 to-blue-600 p-4">
     <div class="container mx-auto flex justify-between items-center">
       <h1 class="text-2xl font-bold">PanaboxMC</h1>
-      <ul class="flex space-x-6">
+      <button class="md:hidden text-white" onclick="toggleMenu()">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+      <ul class="hidden md:flex space-x-6">
         <li><a href="#home" class="hover:text-yellow-300">Ana Sayfa</a></li>
         <li><a href="#market" class="hover:text-yellow-300">Market</a></li>
         <li><a href="#login" class="hover:text-yellow-300">Giriş/Kayıt</a></li>
         <li><a href="https://top.minecraftservers.org/vote/12345" class="hover:text-yellow-300" target="_blank">Oy Ver</a></li>
         <li><a href="https://discord.gg/SENIN-DISCORD-KODUN" class="hover:text-yellow-300" target="_blank">Discord</a></li>
       </ul>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden mt-4 space-y-2">
+      <a href="#home" class="block px-4 py-2 hover:bg-blue-700">Ana Sayfa</a>
+      <a href="#market" class="block px-4 py-2 hover:bg-blue-700">Market</a>
+      <a href="#login" class="block px-4 py-2 hover:bg-blue-700">Giriş/Kayıt</a>
+      <a href="https://top.minecraftservers.org/vote/12345" class="block px-4 py-2 hover:bg-blue-700" target="_blank">Oy Ver</a>
+      <a href="https://discord.gg/SENIN-DISCORD-KODUN" class="block px-4 py-2 hover:bg-blue-700" target="_blank">Discord</a>
     </div>
   </nav>  <!-- Hero Section -->  <header id="home" class="h-screen bg-cover bg-center flex items-center justify-center" style="background-image: url('https://wallpapercave.com/wp/wp4631705.jpg');">
     <div class="bg-black bg-opacity-60 p-8 rounded">
