@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BoxPvP - PvP Sunucu</title>
+  <title>PanaboxMC - Minecraft Sunucu</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <script>
@@ -23,55 +23,27 @@
       });
     }
 
-    // Arena Katılma İşlevi
-    function joinArena(arenaName) {
-      showAlert(arenaName + " arenasına katıldınız!");
+    // Market Satın Alma
+    function purchaseItem(item) {
+      showAlert(item + " başarıyla satın alındı!", "Satın Alma");
     }
 
-    // VIP Satın Alma
-    function purchaseVIP() {
-      showAlert("VIP üyeliğiniz başarıyla satın alındı!", "Satın Alma");
+    // Üyelik Girişi
+    function login() {
+      showAlert("Başarıyla giriş yaptınız!", "Giriş");
     }
 
     // Profil Düzenleme
     function editProfile() {
       showAlert("Profil başarıyla düzenlendi!", "Profil Düzenle");
     }
-
-    // Etkinlik Bildirimi
-    function joinEvent(eventName) {
-      showAlert(eventName + " etkinliğine katıldınız!");
-    }
   </script>
-  <style>
-    /* Hover animasyonları */
-    .hover-zoom:hover {
-      transform: scale(1.05);
-      transition: transform 0.3s ease;
-    }
-
-    /* Scroll animasyonları */
-    .scroll-up {
-      animation: scrollUp 0.5s ease-out forwards;
-    }
-
-    @keyframes scrollUp {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  </style>
 </head>
 <body class="bg-gray-900 text-white">
   <!-- Navbar -->
   <nav class="bg-gradient-to-r from-red-500 to-yellow-500 p-4 sticky top-0 z-50">
     <div class="container mx-auto flex justify-between items-center">
-      <h1 class="text-3xl font-bold">BoxPvP</h1>
+      <h1 class="text-3xl font-bold">PanaboxMC</h1>
       <button class="md:hidden text-white" onclick="toggleMenu()">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -79,100 +51,86 @@
       </button>
       <ul class="hidden md:flex space-x-6">
         <li><a href="#home" class="hover:text-yellow-300">Ana Sayfa</a></li>
-        <li><a href="#arenas" class="hover:text-yellow-300">PvP Arenalar</a></li>
-        <li><a href="#shop" class="hover:text-yellow-300">Mağaza</a></li>
-        <li><a href="#leaderboard" class="hover:text-yellow-300">Sıralamalar</a></li>
-        <li><a href="#profile" class="hover:text-yellow-300">Profil</a></li>
-        <li><a href="#events" class="hover:text-yellow-300">Etkinlikler</a></li>
+        <li><a href="#market" class="hover:text-yellow-300">Market</a></li>
+        <li><a href="#stats" class="hover:text-yellow-300">İstatistikler</a></li>
+        <li><a href="#forum" class="hover:text-yellow-300">Forum</a></li>
+        <li><a href="#login" class="hover:text-yellow-300">Giriş Yap</a></li>
       </ul>
     </div>
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="md:hidden hidden mt-4 space-y-2">
       <a href="#home" class="block px-4 py-2 hover:bg-red-700">Ana Sayfa</a>
-      <a href="#arenas" class="block px-4 py-2 hover:bg-red-700">PvP Arenalar</a>
-      <a href="#shop" class="block px-4 py-2 hover:bg-red-700">Mağaza</a>
-      <a href="#leaderboard" class="block px-4 py-2 hover:bg-red-700">Sıralamalar</a>
-      <a href="#profile" class="block px-4 py-2 hover:bg-red-700">Profil</a>
-      <a href="#events" class="block px-4 py-2 hover:bg-red-700">Etkinlikler</a>
+      <a href="#market" class="block px-4 py-2 hover:bg-red-700">Market</a>
+      <a href="#stats" class="block px-4 py-2 hover:bg-red-700">İstatistikler</a>
+      <a href="#forum" class="block px-4 py-2 hover:bg-red-700">Forum</a>
+      <a href="#login" class="block px-4 py-2 hover:bg-red-700">Giriş Yap</a>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <header id="home" class="h-screen bg-cover bg-center flex items-center justify-center" style="background-image: url('https://wallpapercave.com/wp/wp4631705.jpg');">
-    <div class="bg-black bg-opacity-60 p-8 rounded scroll-up">
-      <h2 class="text-4xl font-bold mb-4">BoxPvP Sunucusuna Hoşgeldiniz</h2>
-      <p class="text-xl mb-6">PvP savaşlarına katıl, eğlencenin tadını çıkar!</p>
+  <!-- Ana Sayfa -->
+  <section id="home" class="h-screen bg-cover bg-center flex items-center justify-center" style="background-image: url('https://wallpapercave.com/wp/wp4631705.jpg');">
+    <div class="bg-black bg-opacity-60 p-8 rounded">
+      <h2 class="text-4xl font-bold mb-4">PanaboxMC Minecraft Sunucusuna Hoşgeldiniz</h2>
+      <p class="text-xl mb-6">Dünyanın en iyi PvP savaşlarına katılın!</p>
       <div class="bg-white text-black px-4 py-2 rounded font-semibold text-lg">
-        Sunucu IP: boxpvp.aternos.me
-      </div>
-    </div>
-  </header>
-
-  <!-- PvP Arenas Section -->
-  <section id="arenas" class="py-16 px-4 bg-gray-800">
-    <h2 class="text-3xl font-bold text-center mb-6 scroll-up">PvP Arenalar</h2>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-gray-700 p-6 rounded-xl shadow-md hover-zoom">
-        <h4 class="text-xl font-bold mb-2">Arenalar</h4>
-        <p>Çeşitli PvP haritalarında savaşın.</p>
-        <button onclick="joinArena('Arena 1')" class="bg-yellow-400 text-black px-4 py-2 rounded-lg font-bold inline-block mt-4">Katıl</button>
-      </div>
-      <div class="bg-gray-700 p-6 rounded-xl shadow-md hover-zoom">
-        <h4 class="text-xl font-bold mb-2">Arena 2</h4>
-        <p>Daha zorlu PvP deneyimi!</p>
-        <button onclick="joinArena('Arena 2')" class="bg-yellow-400 text-black px-4 py-2 rounded-lg font-bold inline-block mt-4">Katıl</button>
+        Sunucu IP: panabox.aternos.me
       </div>
     </div>
   </section>
 
-  <!-- Shop Section -->
-  <section id="shop" class="py-16 px-4">
-    <h2 class="text-3xl font-bold text-center mb-6 scroll-up">Mağaza</h2>
+  <!-- Market -->
+  <section id="market" class="py-16 px-4 bg-gray-800">
+    <h2 class="text-3xl font-bold text-center mb-6">Mağaza</h2>
     <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-gray-700 p-6 rounded-xl shadow-md hover-zoom">
+      <div class="bg-gray-700 p-6 rounded-xl shadow-md">
         <h4 class="text-xl font-bold mb-2">VIP Paket</h4>
-        <p>Özel ayrıcalıklar kazan.</p>
-        <button onclick="purchaseVIP()" class="bg-yellow-400 text-black px-4 py-2 rounded-lg font-bold inline-block mt-4">Satın Al</button>
+        <p>Özel ayrıcalıklar kazanın!</p>
+        <button onclick="purchaseItem('VIP Paket')" class="bg-yellow-400 text-black px-4 py-2 rounded-lg font-bold inline-block mt-4">Satın Al</button>
       </div>
-      <div class="bg-gray-700 p-6 rounded-xl shadow-md hover-zoom">
+      <div class="bg-gray-700 p-6 rounded-xl shadow-md">
         <h4 class="text-xl font-bold mb-2">Premium Paket</h4>
         <p>Özel haritalara erişim!</p>
-        <button onclick="purchaseVIP()" class="bg-yellow-400 text-black px-4 py-2 rounded-lg font-bold inline-block mt-4">Satın Al</button>
+        <button onclick="purchaseItem('Premium Paket')" class="bg-yellow-400 text-black px-4 py-2 rounded-lg font-bold inline-block mt-4">Satın Al</button>
       </div>
     </div>
   </section>
 
-  <!-- Leaderboard Section -->
-  <section id="leaderboard" class="py-16 px-4 bg-gray-900">
-    <h2 class="text-3xl font-bold text-center mb-6 scroll-up">Sıralamalar</h2>
+  <!-- Sunucu İstatistikleri -->
+  <section id="stats" class="py-16 px-4 bg-gray-900">
+    <h2 class="text-3xl font-bold text-center mb-6">Sunucu İstatistikleri</h2>
     <div class="bg-gray-700 p-6 rounded-xl">
-      <h4 class="text-xl font-bold">En İyi PvP Oyuncuları</h4>
-      <ol class="list-decimal pl-5">
-        <li>1. Oyuncu A - 500 Zafer</li>
-        <li>2. Oyuncu B - 400 Zafer</li>
-        <li>3. Oyuncu C - 350 Zafer</li>
-      </ol>
+      <h4 class="text-xl font-bold">Aktif Oyuncular</h4>
+      <p>100+</p>
+      <h4 class="text-xl font-bold mt-4">En İyi Oyuncular</h4>
+      <ul class="list-decimal pl-5">
+        <li>1. OyuncuA - 2000 Puan</li>
+        <li>2. OyuncuB - 1800 Puan</li>
+        <li>3. OyuncuC - 1500 Puan</li>
+      </ul>
     </div>
   </section>
 
-  <!-- Profile Section -->
-  <section id="profile" class="py-16 px-4 bg-gray-800">
-    <h2 class="text-3xl font-bold text-center mb-6 scroll-up">Profil</h2>
+  <!-- Forum -->
+  <section id="forum" class="py-16 px-4 bg-gray-800">
+    <h2 class="text-3xl font-bold text-center mb-6">Forum</h2>
     <div class="bg-gray-700 p-6 rounded-xl">
-      <h4 class="text-xl font-bold">Oyuncu Adı: OyuncuX</h4>
-      <p>Zaferler: 200</p>
-      <p>Katıldığınız Arenalar: 5</p>
-      <button onclick="editProfile()" class="bg-yellow-400 text-black px-4 py-2 rounded-lg font-bold inline-block mt-4">Profil Düzenle</button>
+      <h4 class="text-xl font-bold mb-2">Sunucu Güncellemeleri</h4>
+      <p>Yeni güncellemeler hakkında konuşabilirsiniz.</p>
+      <button class="bg-yellow-400 text-black px-4 py-2 rounded-lg font-bold inline-block mt-4">Görüş Bildir</button>
     </div>
   </section>
 
-  <!-- Events Section -->
-  <section id="events" class="py-16 px-4 bg-gray-900">
-    <h2 class="text-3xl font-bold text-center mb-6 scroll-up">Etkinlikler</h2>
+  <!-- Giriş Yap -->
+  <section id="login" class="py-16 px-4 bg-gray-900">
+    <h2 class="text-3xl font-bold text-center mb-6">Giriş Yap</h2>
     <div class="bg-gray-700 p-6 rounded-xl">
-      <h4 class="text-xl font-bold">PvP Turnuvası</h4>
-      <p>Haftalık PvP turnuvasına katılın!</p>
-      <button onclick="joinEvent('PvP Turnuvası')" class="bg-yellow-400 text-black px-4 py-2 rounded-lg font-bold inline-block mt-4">Katıl</button>
+      <h4 class="text-xl font-bold mb-2">Hesabınıza giriş yapın</h4>
+      <input type="text" placeholder="Kullanıcı Adı" class="w-full p-3 mb-4 text-black rounded">
+      <input type="password" placeholder="Şifre" class="w-full p-3 mb-4 text-black rounded">
+      <button onclick="login()" class="bg-yellow-400 text-black px-4 py-2 rounded-lg font-bold inline-block mt-4">Giriş Yap</button>
+      <div class="mt-4 text-center">
+        <p>Hesabınız yok mu? <a href="#" class="text-yellow-300">Kayıt Olun</a></p>
+      </div>
     </div>
   </section>
 </body>
