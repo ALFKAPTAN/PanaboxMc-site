@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PanaboxMC - Minecraft Sunucusu</title>
     <style>
+        /* Genel stil ayarları */
         * {
             margin: 0;
             padding: 0;
@@ -13,87 +14,104 @@
 
         body {
             font-family: 'Segoe UI', sans-serif;
-            color: white;
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0,0,0,0.6)),
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0,0,0,0.7)),
                         url('https://cdn.wallpapersafari.com/11/44/3z7ZkV.jpg') no-repeat center center fixed;
             background-size: cover;
+            color: white;
+            text-align: center;
         }
 
+        /* Header ve logo */
         header {
             background: rgba(0, 0, 0, 0.8);
-            padding: 15px 0;
-            text-align: center;
+            padding: 30px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
         }
 
         header h1 {
-            font-size: 36px;
+            font-size: 50px;
+            color: #00cc66;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         }
 
+        /* Ana menü */
         nav {
-            background: #111;
-            text-align: center;
+            background-color: #111;
+            padding: 15px 0;
         }
 
         nav a {
-            display: inline-block;
-            padding: 15px 25px;
             color: white;
-            text-decoration: none;
             font-weight: bold;
-            transition: background 0.3s;
+            padding: 10px 20px;
+            text-decoration: none;
+            text-transform: uppercase;
+            display: inline-block;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         nav a:hover {
-            background: #00cc66;
+            background-color: #00cc66;
+            color: #111;
         }
 
+        /* Ana içerik */
         .container {
-            text-align: center;
-            padding: 60px 20px;
+            padding: 50px 20px;
         }
 
         .info-box {
             background: rgba(0, 0, 0, 0.6);
-            max-width: 700px;
+            max-width: 800px;
             margin: auto;
-            padding: 30px;
+            padding: 40px;
             border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.8);
         }
 
         .button {
-            background: #00cc66;
-            padding: 15px 25px;
+            background-color: #00cc66;
+            padding: 12px 24px;
             border-radius: 8px;
-            text-decoration: none;
             color: white;
             font-weight: bold;
+            text-decoration: none;
             margin: 10px;
             display: inline-block;
-            transition: background 0.3s;
+            transition: background-color 0.3s;
         }
 
         .button:hover {
-            background: #00994d;
+            background-color: #00994d;
         }
 
+        /* Player count */
         .player-count {
-            font-size: 24px;
+            font-size: 22px;
             margin-top: 20px;
         }
 
-        @media (max-width: 600px) {
+        /* IP adresi mavi renkte */
+        .ip-address {
+            color: #1E90FF; /* Mavi renk */
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* Mobile uyumlu */
+        @media (max-width: 768px) {
             header h1 {
-                font-size: 24px;
+                font-size: 30px;
             }
 
             nav a {
-                padding: 10px 15px;
+                padding: 8px 16px;
                 font-size: 14px;
             }
 
             .button {
-                padding: 10px 15px;
-                font-size: 14px;
+                padding: 10px 20px;
             }
         }
     </style>
@@ -103,6 +121,7 @@
         <h1>PanaboxMC</h1>
     </header>
 
+    <!-- Ana Menü -->
     <nav>
         <a href="#anasayfa">Anasayfa</a>
         <a href="#discord">Discord</a>
@@ -110,11 +129,11 @@
         <a href="#oyver">Oy Ver</a>
     </nav>
 
-    <!-- ANASAYFA -->
+    <!-- Anasayfa -->
     <div class="container" id="anasayfa">
         <div class="info-box">
             <h2>Türkiye'nin En Eğlenceli Minecraft Sunucusu!</h2>
-            <p><strong>Sunucu IP:</strong> play.panaboxmc.com</p>
+            <p><strong>Sunucu IP:</strong> <span class="ip-address">Panabox.aternos.me</span></p> <!-- Mavi renkli IP -->
             <div class="player-count">Aktif Oyuncular: <span id="playerCount">15</span></div>
             <br>
             <a href="#discord" class="button">Discord'a Katıl</a>
@@ -123,12 +142,11 @@
         </div>
     </div>
 
-    <!-- MAĞAZA -->
+    <!-- Mağaza -->
     <div class="container" id="magaza">
         <div class="info-box">
             <h2>Mağaza</h2>
             <p>Sunucu içi avantajlar elde etmek için paketlerden birini satın al!</p>
-
             <div style="margin-top: 30px;">
                 <div style="margin-bottom: 20px;">
                     <h3>VIP Rütbesi</h3>
@@ -154,7 +172,7 @@
         </div>
     </div>
 
-    <!-- DİĞER BÖLÜMLER (Boş ama çalışıyor) -->
+    <!-- Discord -->
     <div class="container" id="discord">
         <div class="info-box">
             <h2>Discord Topluluğumuza Katıl</h2>
@@ -163,6 +181,7 @@
         </div>
     </div>
 
+    <!-- Oy Ver -->
     <div class="container" id="oyver">
         <div class="info-box">
             <h2>Sunucumuza Oy Ver</h2>
@@ -171,7 +190,7 @@
         </div>
     </div>
 
-    <!-- OYUNCU SAYISI SCRIPT -->
+    <!-- Oyuncu sayısı scripti -->
     <script>
         const playerCount = Math.floor(Math.random() * 100) + 1;
         document.getElementById('playerCount').textContent = playerCount;
