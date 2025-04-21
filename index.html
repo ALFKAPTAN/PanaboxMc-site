@@ -3,197 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PanaboxMC - Minecraft Sunucusu</title>
+    <title>PanaboxMC</title>
     <style>
-        /* Genel stil ayarları */
-        * {
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
-
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0,0,0,0.7)),
-                        url('https://cdn.wallpapersafari.com/11/44/3z7ZkV.jpg') no-repeat center center fixed;
-            background-size: cover;
+        header {
+            background-color: #2a9d8f;
             color: white;
+            padding: 20px;
             text-align: center;
         }
-
-        /* Header ve logo */
-        header {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 30px 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+        h1, h2 {
+            color: #264653;
         }
-
-        header h1 {
-            font-size: 50px;
-            color: #00cc66;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        p {
+            color: #555;
+            font-size: 18px;
         }
-
-        /* Ana menü */
-        nav {
-            background-color: #111;
-            padding: 15px 0;
-        }
-
-        nav a {
-            color: white;
+        .ip-address {
+            color: #0077b6;
             font-weight: bold;
-            padding: 10px 20px;
-            text-decoration: none;
-            text-transform: uppercase;
-            display: inline-block;
-            transition: background-color 0.3s, color 0.3s;
         }
-
-        nav a:hover {
-            background-color: #00cc66;
-            color: #111;
+        .code {
+            background-color: #282c34;
+            color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: "Courier New", Courier, monospace;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
         }
-
-        /* Ana içerik */
-        .container {
-            padding: 50px 20px;
+        .code span {
+            color: #e76f51;
         }
-
-        .info-box {
-            background: rgba(0, 0, 0, 0.6);
-            max-width: 800px;
-            margin: auto;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.8);
-        }
-
         .button {
-            background-color: #00cc66;
-            padding: 12px 24px;
-            border-radius: 8px;
+            background-color: #2a9d8f;
             color: white;
-            font-weight: bold;
-            text-decoration: none;
-            margin: 10px;
-            display: inline-block;
-            transition: background-color 0.3s;
-        }
-
-        .button:hover {
-            background-color: #00994d;
-        }
-
-        /* Player count */
-        .player-count {
-            font-size: 22px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
             margin-top: 20px;
         }
-
-        /* IP adresi mavi renkte */
-        .ip-address {
-            color: #1E90FF; /* Mavi renk */
-            font-size: 20px;
-            font-weight: bold;
-            margin-top: 10px;
+        .button:hover {
+            background-color: #264653;
         }
-
-        /* Mobile uyumlu */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 30px;
-            }
-
-            nav a {
-                padding: 8px 16px;
-                font-size: 14px;
-            }
-
-            .button {
-                padding: 10px 20px;
-            }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #264653;
+            color: white;
+        }
+        .link {
+            color: #e76f51;
+            text-decoration: none;
+        }
+        .link:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <header>
         <h1>PanaboxMC</h1>
+        <p>Minecraft sunucusu hakkında her şey burada!</p>
     </header>
 
-    <!-- Ana Menü -->
-    <nav>
-        <a href="#anasayfa">Anasayfa</a>
-        <a href="#discord">Discord</a>
-        <a href="#magaza">Mağaza</a>
-        <a href="#oyver">Oy Ver</a>
-    </nav>
+    <section>
+        <h2>Sunucu Bilgileri:</h2>
+        <p><strong>IP Adresi:</strong> <span class="ip-address">Panabox.aternos.me</span></p>
+        <p><strong>Sunucu Tipi:</strong> <span style="color: #e76f51;">Survival</span></p>
+        <p><strong>Player Sayısı:</strong> <span style="color: #e76f51;">10/100</span></p>
+    </section>
 
-    <!-- Anasayfa -->
-    <div class="container" id="anasayfa">
-        <div class="info-box">
-            <h2>Türkiye'nin En Eğlenceli Minecraft Sunucusu!</h2>
-            <p><strong>Sunucu IP:</strong> <span class="ip-address">Panabox.aternos.me</span></p> <!-- Mavi renkli IP -->
-            <div class="player-count">Aktif Oyuncular: <span id="playerCount">15</span></div>
-            <br>
-            <a href="#discord" class="button">Discord'a Katıl</a>
-            <a href="#magaza" class="button">Mağaza</a>
-            <a href="#oyver" class="button">Oy Ver</a>
+    <section>
+        <h2>Kod Örneği:</h2>
+        <div class="code">
+            <pre><code>public class PanaboxMC {
+    public static void main(String[] args) {
+        System.out.println("Hoş geldiniz PanaboxMC'ye!");
+    }
+}</code></pre>
         </div>
-    </div>
+    </section>
 
-    <!-- Mağaza -->
-    <div class="container" id="magaza">
-        <div class="info-box">
-            <h2>Mağaza</h2>
-            <p>Sunucu içi avantajlar elde etmek için paketlerden birini satın al!</p>
-            <div style="margin-top: 30px;">
-                <div style="margin-bottom: 20px;">
-                    <h3>VIP Rütbesi</h3>
-                    <p>Özel renkli isim, VIP lobisi, günlük ödüller.</p>
-                    <strong>₺29,99</strong><br>
-                    <a href="#" class="button">Satın Al</a>
-                </div>
-
-                <div style="margin-bottom: 20px;">
-                    <h3>ELMAS Kiti</h3>
-                    <p>Full elmas set, güçlü eşyalar, haftalık teslimat.</p>
-                    <strong>₺49,99</strong><br>
-                    <a href="#" class="button">Satın Al</a>
-                </div>
-
-                <div style="margin-bottom: 20px;">
-                    <h3>LEGEND Rütbesi</h3>
-                    <p>Sunucuda tüm yetkilere özel erişim, market indirimi.</p>
-                    <strong>₺99,99</strong><br>
-                    <a href="#" class="button">Satın Al</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Discord -->
-    <div class="container" id="discord">
-        <div class="info-box">
-            <h2>Discord Topluluğumuza Katıl</h2>
-            <p>Oyuncularla sohbet et, destek al, etkinliklere katıl!</p>
-            <a href="https://discord.gg/örnek" class="button">Discord'a Git</a>
-        </div>
-    </div>
-
-    <!-- Oy Ver -->
-    <div class="container" id="oyver">
-        <div class="info-box">
-            <h2>Sunucumuza Oy Ver</h2>
-            <p>Sunucumuzu yukarıya taşımak için oy vererek destek ol!</p>
-            <a href="#" class="button">Oy Ver</a>
-        </div>
-    </div>
-
-    <!-- Oyuncu sayısı scripti -->
-    <script>
-        const playerCount = Math.floor(Math.random() * 100) + 1;
-        document.getElementById('playerCount').textContent = playerCount;
-    </script>
+    <footer>
+        <button class="button" onclick="window.location.href='https://github.com/yourusername'">GitHub Sayfam</button>
+        <p>GitHub üzerinde daha fazla bilgi için <a href="https://github.com/yourusername" class="link" target="_blank">buraya tıklayın</a>.</p>
+    </footer>
 </body>
 </html>
